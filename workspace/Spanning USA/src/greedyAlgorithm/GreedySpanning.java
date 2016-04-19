@@ -19,6 +19,8 @@ public class GreedySpanning {
 	public static void main(String[] args) throws IOException{
 		GreedySpanning gs = new GreedySpanning();
 		gs.load(new File("USA-highway-miles.txt"));
+		//gs.load(new File("tinyEWG-alpha.txt"));
+
 		gs.run();
 	}
 	
@@ -26,7 +28,8 @@ public class GreedySpanning {
 		int distance = 0;
 		UnionFind uf = new UnionFind(nodes);
 		Edge edge = edges.poll();
-		
+		int edgeCount = 0;
+		System.out.println("---------------");
 		while(!edges.isEmpty()){
 			String u = edge.getStart();
 			String v = edge.getEnd();
@@ -34,11 +37,12 @@ public class GreedySpanning {
 				uf.union(uf.find(u), uf.find(v));
 				distance += edge.getDistance();
 				System.out.println(u + " " + v + " " + edge.getDistance());
+				edgeCount++;
 			}
 			edge = edges.poll();
 			
 		}
-		System.out.println("Distance: " + distance);
+		System.out.println("Distance: " + distance + " Edges: " + edgeCount);
 	}
 	
 	public void load(File file) throws IOException{
@@ -51,7 +55,6 @@ public class GreedySpanning {
 			}else{
 				row = row.substring(0, row.length()-1);
 			}
-			System.out.println(row);
 			nodes.add(row);
 			row = br.readLine();
 		}
@@ -69,7 +72,6 @@ public class GreedySpanning {
 				end = end.substring(1, end.length()-1);
 			}
 			String distance = lineEnd[1].substring(0, lineEnd[1].length()-1);
-			System.out.println(start + " -- " + end + " " + distance);
 			
 			
 			edges.add(new Edge(start,end,Integer.parseInt(distance)));
