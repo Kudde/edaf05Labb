@@ -1,0 +1,11 @@
+NAME: close-pair-2-in.txt
+TYPE: 
+COMMENT: romeo and juliet
+DIMENSION: 4
+EDGE_WEIGHT_TYPE: EUC_2D
+NODE_COORD_SECTION
+far 0 -10
+romeo 0 0
+juliet 0 1
+far 0 10
+
