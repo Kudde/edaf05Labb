@@ -6,4 +6,4 @@ EDGE_WEIGHT_TYPE: EUC_2D
 NODE_COORD_SECTION
 romeo 0 0
 juliet 1 0
- 
+EOF
